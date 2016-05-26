@@ -11,19 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+ <div class="form-group">
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="col-md-2">
+          <%= f.label 'title' %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :title %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="description" aria-describedby="basic-addon1">
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description,rows: 6 %>
-  </div>
 
   <div class="field">
-    <%= f.label :image_url %>
-    <%= f.text_field :image_url %>
+    <%= f.label 'image tag' %>
+    <%= f.file_field :avatar%>
   </div>
 
   <div class="field">
