@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :line_items
   resources :carts
   get 'store/index'
