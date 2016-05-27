@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){
+  $('.form form-register-user').hide();
+  
+  $('.message-signin a').click(function() {
+    $('.form-login-user').hide();
+    $('.form-register-user').show();
+  });
+});

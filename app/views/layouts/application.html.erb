@@ -6,121 +6,99 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">De Depot</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><%=link_to 'Home', root_path%><span class="sr-only">(current)</span></a></li>
-        <li><%=link_to 'Offers'%></a></li>
-        <li><%=link_to 'products', products_path%></a></li>
-        <li><%=link_to 'contact us', store_contact_path%></a></li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">De Depot</a>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%=link_to 'Cart'%></li>
-          <% if !user_signed_in? %>
-            <a href="#modalSignin" role="button" class="btn btn-default" data-toggle="modal">
-              <li>Sign in</li>
-            </a>
-          <%end%>
-
-          <div id="modalSignin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSignin" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h3 id="myModalLabelSignin">LOGIN</h3>
-                </div>
-                <div class="modal-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" id="username" name="username" class="form-control" />
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav font_family">
+            <li class="active"><%=link_to 'Home', root_path%><span class="sr-only">(current)</span></a></li>
+            <li><%=link_to 'Offers'%></a></li>
+            <li><%=link_to 'products', products_path%></a></li>
+            <li><%=link_to 'contact us', store_contact_path%></a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%=link_to 'Cart'%></li>
+              <% if !user_signed_in? %>
+                <a href="#modalSignin" role="button" class="btn btn-default" data-toggle="modal">
+                  <li>Sign in/ sign Up</li>
+                </a>
+              <%end%>
+              <div id="modalSignin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSignin" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h3 id="myModalLabelSignin">LOGIN</h3>
                     </div>
-                    <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="password" id="password" name="password" class="form-control" />
+                    <div class="modal-body">
+                      <%= form_for(:user, :url => registration_path(:user)) do |f| %>
+                        <div class="form">
+                          <div class = "form-register-user"%>
+                            <%=f.text_field :email, placeholder: 'email*'%>
+                            <%=f.text_field :user_name, placeholder: 'user name*'%>
+                            <%=f.password_field :password, placeholder: 'password*'%>
+                              <%= f.submit 'create'%>
+                            <p class="message">Already registered? <a href="#">Sign In</a></p>
+                          </div>
+                        </div>
+                        <% end%>
+                        <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                          <div class="form">
+                            <div class = "form-login-user">
+                              <%=f.text_field :login, placeholder: 'username or email'%>
+                              <%=f.password_field :password, placeholder: 'password'%>
+                              <div class="col-md-2">
+                                <%= f.check_box :remember_me %>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6 font_family">
+                                  <%= f.label :remember_me %>
+                                </div>
+                                <div class="dummy_button">
+                                   <%= f.submit 'Sign in'%>
+                                </div>
+                              </div>
+                              <p class="message-signin"><a>Not registered?</a></p>
+                            </div>
+                          </div>
+                        <% end %>
                     </div>
-                    <button type="submit" class="btn btn-primary">login</button>
-                    <input type="submit" value="Login" />
-                    <input type="button" value="Cancel" />
-                  </form>
-
-                </div>
-                <div class="modal-footer">
-                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  <button class="btn btn-primary">Save changes</button>
+                    <div class="modal-footer">
+                      <!-- <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                      <button class="btn btn-primary">Save changes</button> -->
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <% if !user_signed_in? %>
-            <a href="#modalSignUp" role="button" class="btn btn-default" data-toggle="modal">
-              <li>Sign up</li>
-            </a>
-          <%end%>
-          <div id="modalSignUp" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelSignUp" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h3 id="myModalLabelSignUp">SIGN UP</h3>
-                </div>
-                <div class="modal-body">
-                  <!-- <form role="form"> -->
-                  <%#= form_for(@user, url: registration_path(@user)) do |f| %>
-                    <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" id="username" name="username" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                      <label for="email">email</label>
-                      <input type="text" id="email" name="password" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="password" id="password" name="password" class="form-control" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">login</button>
-                    <input type="submit" value="Login" />
-                    <input type="button" value="Cancel" />
-                  <%#end%>
-                  <!-- </form> -->
-
-                </div>
-                <div class="modal-footer">
-                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  <button class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <%if user_signed_in?%>
-            <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-          <%end%>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+              <%if user_signed_in?%>
+                <li><%=current_user.user_name%></li>
+                <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+              <%end%>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
   </head>
   <body>
-  <%= yield %>
+    <p class = "alert"><%= alert%></p>
+    <% #flash.each do |name, msg| -%>
+      <%#= content_tag :div, msg, class: "alert alert-#{name}" %>
+    <% #end -%>
+    <%= yield %>
   </body>
 </html>
