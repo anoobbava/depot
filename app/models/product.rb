@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :title, uniqueness: true
   has_many :line_items
+  has_many :reviews
   mount_uploader :avatar, AvatarUploader
-  ratyrate_rateable "cost", "durability", "service" 
+  ratyrate_rateable "cost", "durability", "service"
 end

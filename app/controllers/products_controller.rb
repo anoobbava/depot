@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @latest_review = Review.find_latest
   end
 
   # GET /products/1
