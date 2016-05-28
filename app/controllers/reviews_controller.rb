@@ -15,14 +15,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    binding.pry
     @review = Review.new
   end
-
-  # def latest
-  #   binding.pry
-  #   Review.find_latest()
-  # end
 
   # GET /reviews/1/edit
   def edit
@@ -33,7 +27,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    binding.pry
     respond_to do |format|
       if @review.save
         # format.html { redirect_to @review, notice: 'Review was successfully created.' }
