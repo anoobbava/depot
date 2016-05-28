@@ -4,4 +4,5 @@ class Product < ApplicationRecord
   validates :title, uniqueness: true
   has_many :line_items
   mount_uploader :avatar, AvatarUploader
+  ratyrate_rateable "cost", "durability", "service" 
 end

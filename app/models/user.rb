@@ -4,9 +4,8 @@ class User < ApplicationRecord
   # before_action :authenticate_user!
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         # ,
-         # :authentication_keys => [:login]
   validate :validate_username
+  ratyrate_rater
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)

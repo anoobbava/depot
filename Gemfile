@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'devise'
-gem 'simple_form'
+gem 'ratyrate'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
