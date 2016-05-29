@@ -7,11 +7,13 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @latest_review = Review.find_latest
+    @latest_product = Product.find_latest_product
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @latest_review = Review.find_latest
   end
 
   # GET /products/new

@@ -2,13 +2,11 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class="container">
     <div class="row">
-      <div class="col-xs-4">
-      <%= devise_error_messages! %>
+      <div class="col-xs-4 font_family">
+      <%= devise_error_messages!%>
       </div>
     </div>
   </div>
-  
-
   <div class="form">
     <div class="credential-message">create account</div>
     <div class = "form-register-user"%>
@@ -16,7 +14,7 @@
       <%=f.text_field :user_name, placeholder: 'user name*', required: true, autocomplete: "off"%>
       <%=f.password_field :password, placeholder: 'password*', required: true, autocomplete: "off"%>
         <%= f.submit 'create'%>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
+      <p><%=link_to 'Already registered?', new_user_session_path%></p>
     </div>
   </div>
 

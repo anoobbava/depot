@@ -55,13 +55,14 @@ div {
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: #87A3BB;
   display: table;
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px ;
+  /*solid red*/
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -187,14 +188,14 @@ label {
   color: #EF3B3A;
 }
 body {
-  background: #76b852;
+  /*background: #76b852;
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);
   background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);*/
   font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;*/
 }
 .font_family {
   font-family: "Roboto", sans-serif;

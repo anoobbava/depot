@@ -25,7 +25,7 @@
             <li><%=link_to 'products', products_path%></a></li>
             <li><%=link_to 'contact us', store_contact_path%></a></li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left font_family" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
@@ -96,10 +96,7 @@
     </nav>
   </head>
   <body>
-    <p class = "alert"><%= alert%></p>
-    <% #flash.each do |name, msg| -%>
-      <%#= content_tag :div, msg, class: "alert alert-#{name}" %>
-    <% #end -%>
+    <p class="alert"><%= alert%></p>
     <%= yield %>
   </body>
 </html>

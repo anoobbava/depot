@@ -6,4 +6,8 @@ class Product < ApplicationRecord
   has_many :reviews
   mount_uploader :avatar, AvatarUploader
   ratyrate_rateable "cost", "durability", "service"
+
+  def self.find_latest_product
+    order('created_at DESC').limit(2)
+  end
 end
