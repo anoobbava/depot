@@ -34,7 +34,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="font_family"><%=link_to 'Cart'%></li>
               <% if !user_signed_in? %>
-                <a href="#modalSignin" role="button" class="btn btn-default" data-toggle="modal">
+                <a href="#modalSignin" role="button" class="btn btn-default test-href" data-toggle="modal">
                   <li class="font_family">Sign in/ sign Up</li>
                 </a>
               <%end%>
@@ -47,19 +47,22 @@
                     </div>
                     <div class="modal-body">
                       <%#= form_for(:user, :url => registration_path(:user)) do |f| %>
-                      <%=form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                      <%=form_for(resource, as: resource_name, url: registration_path(resource_name),
+                                  remote: true, html: { id: 'signup_form'} ) do |f| %>
                         <div class="form">
                           <div class = "form-register-user"%>
                             <%=f.text_field :email, placeholder: 'email*', required: true%>
                             <%=f.text_field :user_name, placeholder: 'user name*', required: true%>
                             <%=f.password_field :password, placeholder: 'password*', required: true%>
                               <%= f.submit 'create'%>
-                            <p class="message">Already registered? <a href="#">Sign In</a></p>
+                            <p class="message-signup">Already registered?<a>Sign In</a></p>
                           </div>
                         </div>
                         <% end-%>
-                        <%= form_for(:user, :url => session_path(:user)) do |f| %>
-                          <div class="form">
+                        <%= form_for(:user, :url => session_path(:user), remote: true,
+                                      html: { id: 'login_form' }) do |f| %>
+                            <div class="form">
+                            <p class="error-message-login">Invalid User name or password</p>
                             <div class = "form-login-user">
                               <%=f.text_field :login, placeholder: 'username or email'%>
                               <%=f.password_field :password, placeholder: 'password'%>
