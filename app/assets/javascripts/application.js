@@ -19,10 +19,21 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $('.form form-register-user').hide();
-  
-  $('.message-signin a').click(function() {
-    $('.form-login-user').hide();
-    $('.form-register-user').show();
+  $("form#login_form").bind("ajax:error", function(e, data, status, xhr) {
+    $('.error-message-login').show();
   });
+
+  $('.message-signin').click(function(){
+    $('#login_form').hide();
+    $('#signup_form').show();
+  });
+  $('.message-signup').click(function(){
+    $('#login_form').show();
+    $('#signup_form').hide();
+  });
+
+  $('.test-href').click(function(){
+    $('#signup_form').hide();
+  });
+
 });
