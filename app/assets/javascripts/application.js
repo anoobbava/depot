@@ -34,6 +34,8 @@ $(document).ready(function(){
 
   $('.test-href').click(function(){
     $('#signup_form').hide();
+    $('#login_form').show();
   });
+
 
 });

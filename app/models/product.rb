@@ -8,6 +8,6 @@ class Product < ApplicationRecord
   ratyrate_rateable "cost", "durability", "service"
 
   def self.find_latest_product
-    order('created_at DESC').limit(2)
+    order('created_at DESC').limit(1)
   end
 end
